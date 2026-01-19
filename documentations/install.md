@@ -26,18 +26,18 @@ Que consiste basicamente en utilizar VirtuaBox como variable de entorno para usa
 
 -Escribir vboxmanage showinfo -Nombre de la maquina-
 
-Localizar el arametro UUID y copiar la serie de numeros y letras para realizar los siguientes pasos
+Localizar el parametro UUID y copiar la serie de numeros y letras para realizar los siguientes pasos
 
-Escribir vboxmanage modifyvm <UUID> --acpi off
+Escribir vboxmanage modifyvm UUID --acpi off
 
-Despues vboxmanage modifyvm <UUID> --ioapic off
+Despues vboxmanage modifyvm UUID --ioapic off
 
 Y con ello el error de noapic estara solucionado, dejando poder iniciar la maquina vulnerable exitosamente
 (Para esta solucion, la maquina Metasploitable debe estar apagada)
 
 ![solucion](https://github.com/JOGU-HP/Metasploitable/blob/75a5020d2d6ac83dcc2a8289135ae84819260577/Images/instalacion/solucion.png)
 
-Ahora se realiza una primera configuracion referente a la red de ethernet, como se usara una red local que no afecte a otros dispositivos es necesario que se realice una conexion y comunicacion entre 2 dispositivos (atacante y visctima)
+Ahora se realiza una primera configuracion referente a la red de ethernet, como se usara una red local que no afecte a otros dispositivos y con un router aislado es necesario que se realice una conexion y comunicacion entre 2 dispositivos (atacante y victima)
 
 Al escribir ip a no mostraba ninguna red, en eth0 no mostraba alguna ip asi que se levanto el servicio dhcp con el comando -sudo dhclien eth0-
 
@@ -46,11 +46,11 @@ Debe mostrar informacion con una ip
 Al escribir de nuevo ip a ahora si muestra conexion al router y la asignacion de una IP
 ![config red](https://github.com/JOGU-HP/Metasploitable/blob/75a5020d2d6ac83dcc2a8289135ae84819260577/Images/instalacion/configuracion%20%20de%20red.png)
 
-Ahora que la conexion ya es detectada por Metasploitable, ahora en Kali, se conecta via ethernet para la asignacion de una IP, asi que se conecta y con ayuda del comando ip a muestra la ip que el router asigna a los equipos
+Ahora que la conexion ya es detectada por Metasploitable, en Kali, se conecta via ethernet para la asignacion de una IP, asi que se conecta de forma fisica el cable ethernet al equipo y con ayuda del comando ip a muestra la ip que el router asigna a los equipos
 ![kali ip](https://github.com/JOGU-HP/Metasploitable/blob/2622ac3ca63d97bdc522f4550e78302d1202ad17/Images/instalacion/ip%20atack.png)
 
 
-Una vez que ambos equipos estan conectados localmente a un mismo router, se hace un ping de comprobacion para verificar la comunicacion la cual es correcta
+Ahora que ambos equipos estan conectados localmente a un mismo router, se hace un ping de comprobacion para verificar la comunicacion la cual es correcta con el envio y recibimiento de paquetes
 
 De victima a atacante
 ![ping vic](https://github.com/JOGU-HP/Metasploitable/blob/2622ac3ca63d97bdc522f4550e78302d1202ad17/Images/instalacion/ping%20victima.png)
